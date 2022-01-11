@@ -6,7 +6,7 @@
 /*   By: gmary <gmary@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 13:33:50 by gmary             #+#    #+#             */
-/*   Updated: 2022/01/11 12:54:43 by gmary            ###   ########.fr       */
+/*   Updated: 2022/01/11 16:31:02 by gmary            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 //a tej
 #include <stdio.h>
 
-/* ici dans le while cest assez simple on decale, en premiere instance, de 8 bits vers la gauche le chiffre 1 
-soit 10000000 que lon compare avec le charactere c et on decale a chaque apl de 1 vers al droite car on decroit,
+/* ici dans le while cest assez simple on decale, en premiere instance, 
+de 8 bits vers la gauche le chiffre 1 
+soit 10000000 que lon compare avec le charactere c 
+et on decale a chaque apl de 1 vers al droite car on decroit,
 si un 1 se situe a la meme position dans c et dans le bitwise alors on renvoie 1;
 on commence a 7 pour avoir 8 bits inclue et donc on utilise >= 0 */
 
 void	ft_convert_char(pid_t pid, char c)
 {
 	int	char_bits;
-	(void)pid; //a tejjjjjjjjjjjjjjjjjjjjjjjjjjjjj
-
 
 	char_bits = 7;
-	while(char_bits >= 0)
+	while (char_bits >= 0)
 	{
 		if (c & (1 << char_bits))
 			kill(pid, SIGUSR1);
@@ -66,7 +66,7 @@ int	ft_check(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if(!ft_isdigit(str[i]))
+		if (!ft_isdigit(str[i]))
 			return (0);
 		i++;
 	}
@@ -75,9 +75,6 @@ int	ft_check(char *str)
 
 int	main(int ac, char **av)
 {
-	//(void)ac;
-	//(void)av;
-	//struct s_talk	*tlk = NULL;
 	pid_t	pid;
 	char	*str;
 
@@ -88,18 +85,6 @@ int	main(int ac, char **av)
 	}
 	pid = ft_atoi(av[1]);
 	str = av[2];
-	//tlk->pid = ft_atoi(av[1]);
-	//tlk->msg = malloc(sizeof(char) * (ft_strlen(av[2]) + 1));
-	//tlk->msg = av[2];
 	ft_str_convert(pid, av[2]);
-	//ft_str_convert(tlk->pid, tlk->msg);
-	//free(tlk);
-	// mieux utiliser sigaction que signal
-	// donner structure a sigaction
-	//boucle jai pas recu
-	//signaction => jai recu un signal je le lis et je fais mon programme
-	//boucle
-	//malloc augmentant jusquau \0, jimprime puis free() , puis passage a lautres message
-	//
 	return (0);
 }

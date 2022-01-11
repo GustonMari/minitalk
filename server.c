@@ -6,7 +6,7 @@
 /*   By: gmary <gmary@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 10:16:25 by gmary             #+#    #+#             */
-/*   Updated: 2022/01/11 15:53:38 by gmary            ###   ########.fr       */
+/*   Updated: 2022/01/11 16:33:22 by gmary            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ char	*ft_strjoin_modif(char *s1, char s2)
 	int		i;
 
 	i = 0;
-	//if (!s1 || !s2)
-	//	return (NULL);
 	if (!s1)
 		s1 = ft_strdup("");
 	dest = malloc(sizeof(char) * (ft_strlen(s1) + 1 + 1));
@@ -56,7 +54,7 @@ char	*ft_strjoin_modif(char *s1, char s2)
 	return (dest);
 }
 
-void	ft_sig_handler(int	sig, siginfo_t *details, void *nothing)
+void	ft_sig_handler(int sig, siginfo_t *details, void *nothing)
 {
 	static char	current;
 	static int	bits = 7;
@@ -109,7 +107,6 @@ int	main(void)
 	action.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action, NULL);
-
 	while (1)
 		pause();
 	return (0);
