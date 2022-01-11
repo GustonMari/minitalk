@@ -6,7 +6,7 @@
 /*   By: gmary <gmary@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 13:33:50 by gmary             #+#    #+#             */
-/*   Updated: 2022/01/11 10:41:24 by gmary            ###   ########.fr       */
+/*   Updated: 2022/01/11 12:54:43 by gmary            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ on commence a 7 pour avoir 8 bits inclue et donc on utilise >= 0 */
 void	ft_convert_char(pid_t pid, char c)
 {
 	int	char_bits;
+	(void)pid; //a tejjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+
 
 	char_bits = 7;
 	while(char_bits >= 0)
@@ -64,7 +66,7 @@ int	ft_check(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if(ft_isdigit(str[i]))
+		if(!ft_isdigit(str[i]))
 			return (0);
 		i++;
 	}
@@ -75,17 +77,23 @@ int	main(int ac, char **av)
 {
 	//(void)ac;
 	//(void)av;
-	t_talk	*tlk = NULL;
+	//struct s_talk	*tlk = NULL;
+	pid_t	pid;
+	char	*str;
 
 	if (!ac || ac != 3 || !ft_check(av[1]))
 	{
 		write(2, "Invalid argument(s)\n", 20);
 		return (-1);
 	}
-	tlk->pid = ft_atoi(av[1]);
-	tlk->msg = av[2];
-	ft_str_convert(tlk->pid, tlk->msg);
-
+	pid = ft_atoi(av[1]);
+	str = av[2];
+	//tlk->pid = ft_atoi(av[1]);
+	//tlk->msg = malloc(sizeof(char) * (ft_strlen(av[2]) + 1));
+	//tlk->msg = av[2];
+	ft_str_convert(pid, av[2]);
+	//ft_str_convert(tlk->pid, tlk->msg);
+	//free(tlk);
 	// mieux utiliser sigaction que signal
 	// donner structure a sigaction
 	//boucle jai pas recu
