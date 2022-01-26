@@ -76,7 +76,6 @@ void	ft_sig_handler(int sig, siginfo_t *details, void *nothing)
 			ft_putstr_fd_modif(str, 1);
 			str = NULL;
 			current = 0;
-			//free(str);
 		}
 	}
 }
@@ -99,7 +98,6 @@ int	main(void)
 	struct sigaction	action;
 
 	sigemptyset(&action.sa_mask);
-	//action.sa_handler = ft_sig_handler;
 	pid = getpid();
 	ft_putnbr_fd(pid, 1);
 	write(1, "\n", 1);

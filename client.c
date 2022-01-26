@@ -84,6 +84,10 @@ int	main(int ac, char **av)
 		return (-1);
 	}
 	pid = ft_atoi(av[1]);
+	if (pid <= 0)
+	{
+		write(2, "Wrong pid\n", 10);
+	}
 	str = av[2];
 	ft_str_convert(pid, av[2]);
 	return (0);
